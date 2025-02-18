@@ -16,12 +16,12 @@ public class AddressService {
 
     private final AddressRepository addressRepository;
 
-    public void createAddress(EventRequestDTO data, Event event) {
+    public Address createAddress(EventRequestDTO data, Event event) {
         Address address = new Address();
         address.setCity(data.city());
         address.setUf(data.state());
         address.setEvent(event);
-        addressRepository.save(address);
+        return addressRepository.save(address);
     }
 
     public Optional<Address> findByEventId(UUID eventId) {
